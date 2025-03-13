@@ -1,0 +1,79 @@
+---
+title: "TeachR Git & RStudio"
+format: html
+editor: visual
+author: Salome Oehler 2025
+---
+
+## Git and RStudio
+
+Rstudio enables direct communication with GitHub without the need to use the terminal.
+
+To set up git in your RStudio make sure you have a GitHub account and know your GitHub username, associated Email address and password.
+
+### Set global options
+
+Once per machine, global options have to be set (or when you would like to change something, but not every time you wish to use git) to provide your machine with your github username and associated email address. To achieve this, in the console run the following lines of code, adapted for your personal data:
+
+```{r}
+#| eval: false
+usethis::use_git_config(user.name = "github_username", 
+                        user.email = "email_used_for_github@email.com",
+                        pull.rebase = "false")
+```
+
+Then set the default name of the main branch created when first committing to a new GitHub repository:
+
+```{r}
+#| eval: false
+
+usethis::git_default_branch_configure(name = "main")
+
+```
+
+You can see your global settings when running:
+
+```{r}
+#| eval: false
+
+usethis::git_sitrep()
+```
+
+Note there is not yet a "Git" tab next to the "Environment" and "History" tabs, which is where it will show up once fully set up.
+
+Figure 1 here
+
+### Create Github access token
+
+To create a new access token run the following code:
+
+```{r}
+#| eval: false
+
+usethis::create_github_token()
+```
+
+This will automatically open a connection to GitHub, where you will be able to set up the token. Add a usecase, but don't worry about changing default settings. Scroll down and "generate token". Be advised that the token will disappear once you close the page, so make sure it is copied.
+
+Now, run:
+
+```{r}
+#| eval: false
+
+gitcreds::gitcreds_set()
+```
+
+and paste your copied token. When running the usethis::git_sitrep() command again, the "personal access token" line should now read '<discovered>'.
+
+### Set up new repository
+
+To connect what you are working on to GitHub, you need to create a new repository on GitHub. On GitHub \> Repositories \> New, chose a descriptive name, check "Add a README file" and chose an appropriate license. In the course I took we chose Apache 2.0, don't ask me why. Click "create repository".
+
+In the new repository click code and copy the HTTPS link provided. It is needed to clone the repository onto your Rstudio.
+
+### Clone repository to Rstudio
+
+In R-Studio go to File \> New Project \> Version Control \> Git and add your copied link under URL. Give the new project a descriptive name, probably easiest to choose the same name as for the GitHub repository.
+
+You should now be able to see the Git header in the topright quarter of your RStudio screen.
+If you have made it here, congrats, you have an active connection between your local machine and GitHub for this specific project.
