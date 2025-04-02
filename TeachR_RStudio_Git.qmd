@@ -75,5 +75,4 @@ In the new repository click code and copy the HTTPS link provided. It is needed 
 
 In R-Studio go to File \> New Project \> Version Control \> Git and add your copied link under URL. Give the new project a descriptive name, probably easiest to choose the same name as for the GitHub repository.
 
-You should now be able to see the Git header in the topright quarter of your RStudio screen.
-If you have made it here, congrats, you have an active connection between your local machine and GitHub for this specific project.
+You should now be able to see the Git header in the topright quarter of your RStudio screen. If you have made it here, congrats, you have an active connection between your local machine and GitHub for this specific project.
